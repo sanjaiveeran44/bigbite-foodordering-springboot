@@ -1,0 +1,66 @@
+.login-footer {
+  background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+  color: white;
+  padding: 1.5rem 0;
+  margin-top: auto;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 2rem;
+}
+
+.footer-container p {
+  font-size: 0.875rem;
+  color: #d1d5db;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-container {
+    padding: 0 1rem;
+  }
+  
+  .brand-name {
+    font-size: 1.5rem;
+  }
+  
+  .about-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+  
+  .login-hero {
+    padding: 2rem 1rem;
+  }
+  
+  .login-container {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-section {
+    gap: 0.5rem;
+  }
+  
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .logo-tx {
+    font-size: 1.2rem;
+  }
+  
+  .brand-name {
+    font-size: 1.3rem;
+  }
+  
+  .login-container {
+    padding: 1.5rem;
+  }
+}
