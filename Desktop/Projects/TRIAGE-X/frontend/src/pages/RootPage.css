@@ -1,0 +1,10 @@
+/* RootPage.css */
+.root-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: poppins, sans-serif, serif, monospace;
+  }
+  
+  /* Header.css */
+  
