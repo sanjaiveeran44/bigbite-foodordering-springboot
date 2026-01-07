@@ -1,0 +1,123 @@
+.register-hero {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    position: relative;
+    background: radial-gradient(ellipse at center, white 20%, rgba(255, 255, 255, 0.95) 40%, rgba(255, 255, 255, 0.7) 70%, transparent 100%);
+  }
+  
+  .register-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(180deg, rgba(42, 74, 107, 0.3) 0%, transparent 100%);
+  }
+  
+  .register-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(0deg, rgba(26, 54, 93, 0.3) 0%, transparent 100%);
+  }
+  
+  .hero-content {
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .register-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .form-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .medical-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #1a365d;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  }
+  
+  .form-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #1a365d;
+    margin: 0;
+    letter-spacing: -0.5px;
+  }
+  
+  .register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .input-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-input {
+    padding: 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+    color: #2d3748;
+  }
+  
+  .form-input:focus {
+    outline: none;
+    border-color: #2a4a6b;
+    box-shadow: 0 0 0 3px rgba(42, 74, 107, 0.1);
+    transform: translateY(-1px);
+  }
+  
+  .form-input::placeholder {
+    color: #a0aec0;
+  }
+  
+  .signup-button {
+    background: linear-gradient(135deg, #2d2dce 0%, #073795 100%);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+  }
+  
+  .signup-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(26, 54, 93, 0.3);
+    background: linear-gradient(135deg, #2b25da 0%, #819ae5 100%);
+  }
+  
+  .signup-button:active {
+    transform: translateY(0);
+  }
+.register-hero{
+    background-color: aliceblue !important;
+}
