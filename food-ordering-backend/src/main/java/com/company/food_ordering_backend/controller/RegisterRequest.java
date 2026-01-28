@@ -1,15 +1,17 @@
+package com.company.food_ordering_backend.controller;
+
 public class RegisterRequest {
     private String userName;
     private String password;
     private String role;
 
-    public getUserName(){
+    public String getUserName(){
         return userName;
     }
-    public getPassword(){
+    public String getPassword(){
         return password;
     }
-    public getRole(){
+    public String getRole(){
         return role;
     }
 }
