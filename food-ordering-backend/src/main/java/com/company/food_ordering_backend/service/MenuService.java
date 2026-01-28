@@ -1,8 +1,8 @@
-package com.company.foodorder.service;
+package com.company.food_ordering_backend.service;
 
-import com.company.foodorder.dao.InventoryDAO;
-import com.company.foodorder.dao.MenuItemDAO;
-import com.company.foodorder.model.MenuItem;
+import com.company.food_ordering_backend.dao.InventoryDAO;
+import com.company.food_ordering_backend.dao.MenuItemDAO;
+import com.company.food_ordering_backend.model.MenuItem;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
