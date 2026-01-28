@@ -1,6 +1,6 @@
-package com.company.foodorder.dao;
+package com.company.food_ordering_backend.dao;
 
-import com.company.foodorder.model.User;
+import com.company.food_ordering_backend.model.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
