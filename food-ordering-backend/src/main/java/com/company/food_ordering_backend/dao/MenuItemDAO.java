@@ -1,10 +1,12 @@
-package com.company.foodorder.dao;
+package com.company.food_ordering_backend.dao;
 
-import com.company.foodorder.model.MenuItem;
+import com.company.food_ordering_backend.model.MenuItem;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 @Repository
