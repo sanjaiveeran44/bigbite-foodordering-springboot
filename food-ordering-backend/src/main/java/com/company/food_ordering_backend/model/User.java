@@ -1,4 +1,4 @@
-package com.company.foodorder.model;
+package com.company.food_ordering_backend.model;
 
 public class User {
 
