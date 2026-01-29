@@ -27,4 +27,23 @@ public class InventoryDAO{
                 """;
         return jdbcTemplate.queryForObject(sql, Integer.class, menuItemId);
     }
+    public void updateQuantity(Long menuItemId, int quantity) {
+        String sql = """
+            UPDATE inventory
+            SET quantity = quantity - ?
+            WHERE menu_item_id = ?
+        """;
+        jdbcTemplate.update(sql, quantity, menuItemId);
+    }
+
+    public int getQuantityForUpdate(Long menuItemId) {
+        String sql = """
+            SELECT quantity
+            FROM inventory
+            WHERE menu_item_id = ?
+            FOR UPDATE
+        """;
+        return jdbcTemplate.queryForObject(sql, Integer.class, menuItemId);
+    }
+
 }
