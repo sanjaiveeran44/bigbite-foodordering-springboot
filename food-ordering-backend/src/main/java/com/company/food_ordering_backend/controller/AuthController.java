@@ -45,7 +45,7 @@ public class AuthController {
                     request.getUserName(),
                     request.getPassword()
             );
-            return ResponseEntity.ok("login successful");
+            return ResponseEntity.ok(user);
         } catch (RuntimeException e) {
             return ResponseEntity
                     .status(HttpStatus.UNAUTHORIZED)
