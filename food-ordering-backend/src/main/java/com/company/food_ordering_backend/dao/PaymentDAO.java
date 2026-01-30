@@ -14,8 +14,8 @@ public class PaymentDAO {
 
     public void savePayment(Long orderId, String paymentId, double amount) {
         String sql = """
-            INSERT INTO payments (order_id, payment_id, amount, status)
-            VALUES (?, ?, ?, 'COMPLETED')
+            INSERT INTO payments (order_id, stripe_payment_id, amount, status)
+            VALUES (?, ?, ?, 'SUCCESS')
         """;
         jdbcTemplate.update(sql, orderId, paymentId, amount);
     }
