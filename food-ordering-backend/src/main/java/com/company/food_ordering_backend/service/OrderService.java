@@ -14,6 +14,7 @@ public class OrderService {
     private final CartDAO cartDAO;
     private final InventoryDAO inventoryDAO;
     private final OrderDAO orderDAO;
+    private final OrderItemDAO orderItemDAO;
     private final PaymentDAO paymentDAO;
     private final PaymentService paymentService;
     private final TransactionTemplate transactionTemplate;
@@ -22,6 +23,7 @@ public class OrderService {
             CartDAO cartDAO,
             InventoryDAO inventoryDAO,
             OrderDAO orderDAO,
+            OrderItemDAO orderItemDAO,
             PaymentDAO paymentDAO,
             PaymentService paymentService,
             DataSourceTransactionManager txManager
@@ -29,6 +31,7 @@ public class OrderService {
         this.cartDAO = cartDAO;
         this.inventoryDAO = inventoryDAO;
         this.orderDAO = orderDAO;
+        this.orderItemDAO = orderItemDAO;
         this.paymentDAO = paymentDAO;
         this.paymentService = paymentService;
         this.transactionTemplate = new TransactionTemplate(txManager);
@@ -48,6 +51,8 @@ public class OrderService {
                 Long menuItemId = ((Number) item.get("menu_item_id")).longValue();
                 int qty = ((Number) item.get("quantity")).intValue();
                 double price = ((Number) item.get("price")).doubleValue();
+
+                System.out.println(" ************** Processing item: " + menuItemId + " qty: " + qty + " price: ***********" + price);
 
                 int available = inventoryDAO.getQuantityForUpdate(menuItemId);
                 if (available < qty) {
@@ -74,4 +79,24 @@ public class OrderService {
             cartDAO.clearCart(userId);
         });
     }
+    public void cancelOrder(Long userId, Long orderId) {
+        transactionTemplate.executeWithoutResult(status -> {
+
+            String currentStatus = orderDAO.getOrderStatus(orderId);
+
+            if (!"PLACED".equals(currentStatus)) {
+                throw new RuntimeException("Order cannot be cancelled at this stage");
+            }
+
+            var orderItems = orderItemDAO.findItemsByOrder(orderId);
+            for (var item : orderItems) {
+                Long menuItemId = ((Number) item.get("menu_item_id")).longValue();
+                int qty = ((Number) item.get("quantity")).intValue();
+                inventoryDAO.restoreQuantity(menuItemId, qty);
+            }
+
+            orderDAO.updateOrderStatus(orderId, "CANCELLED");
+        });
+    }
+
 }
