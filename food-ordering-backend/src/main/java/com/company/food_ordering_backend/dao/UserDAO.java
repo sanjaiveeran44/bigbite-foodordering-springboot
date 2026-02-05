@@ -25,14 +25,27 @@ public class UserDAO {
                     rs.getLong("id"),
                     rs.getString("username"),
                     rs.getString("password_hash"),
-                    rs.getString("role")
+                    rs.getString("role"), 
+                    rs.getString("email")
             );
         }
     };
 
+    public Optional<User> findByEmail(String email) {
+        String sql = """
+                SELECT id, username, password_hash, role, email
+                FROM users
+                WHERE email = ?
+                """;
+
+        return jdbcTemplate.query(sql, userRowMapper, email)
+                .stream()
+                .findFirst();
+    }
+
     public Optional<User> findByUsername(String username) {
         String sql = """
-                SELECT id, username, password_hash, role
+                SELECT id, username, password_hash, role, email
                 FROM users
                 WHERE username = ?
                 """;
@@ -42,13 +55,13 @@ public class UserDAO {
                 .findFirst();
     }
 
-    public Long createUser(String username, String passwordHash, String role) {
+    public Long createUser(String username, String passwordHash, String role, String email) {
         String sql = """
-                INSERT INTO users (username, password_hash, role)
-                VALUES (?, ?, ?)
+                INSERT INTO users (username, password_hash, role, email)
+                VALUES (?, ?, ?, ?)
                 """;
 
-        jdbcTemplate.update(sql, username, passwordHash, role);
+        jdbcTemplate.update(sql, username, passwordHash, role, email);
 
         return jdbcTemplate.queryForObject(
                 "SELECT LAST_INSERT_ID()",

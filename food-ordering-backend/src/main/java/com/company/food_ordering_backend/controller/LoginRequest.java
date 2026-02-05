@@ -2,11 +2,11 @@ package com.company.food_ordering_backend.controller;
 
 public class LoginRequest {
 
-    private String userName;
+    private String email;
     private String password;
 
-    public String getUserName(){
-        return userName;
+    public String getEmail(){
+        return email;
     }
     public String getPassword(){
         return password;

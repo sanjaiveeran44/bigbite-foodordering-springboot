@@ -5,15 +5,17 @@ public class User {
     private Long id;
     private String username;
     private String passwordHash;
+    private String email;
     private String role;
 
     public User() {}
 
-    public User(Long id, String username, String passwordHash, String role) {
+    public User(Long id, String username, String passwordHash, String role, String email) {
         this.id = id;
         this.username = username;
         this.passwordHash = passwordHash;
         this.role = role;
+        this.email = email;
     }
 
     public Long getId() {
@@ -32,6 +34,10 @@ public class User {
         return role;
     }
 
+    public String getEmail(){
+        return email;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -46,5 +52,9 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public void setEmail(String email){
+        this.email = email;
     }
 }

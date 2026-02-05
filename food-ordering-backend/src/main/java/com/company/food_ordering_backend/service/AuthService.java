@@ -16,21 +16,21 @@ public class AuthService {
         this.userDao = userDao;
     }
 
-    public User register(String userName, String password, String role){
+    public User register(String userName, String password, String role, String email){
         Optional<User> existingUser = userDao.findByUsername(userName);
         if(existingUser.isPresent()){
             throw new RuntimeException("User already exist !");
         }
 
         String passwordHash = hashPassword(password);
-        Long userId = userDao.createUser(userName, passwordHash, role);
+        Long userId = userDao.createUser(userName, passwordHash, role, email);
 
-        return new User(userId,userName,passwordHash,role);
+        return new User(userId,userName,passwordHash,role,email);
     }
 
-    public User login(String userName, String password){
-        User user = userDao.findByUsername(userName)
-        .orElseThrow(() -> new RuntimeException("Invalid username or passwor"));
+    public User login(String email, String password){
+        User user = userDao.findByEmail(email)
+        .orElseThrow(() -> new RuntimeException("Invalid email or password"));
 
         if(!verifyPassword(password,user.getPasswordHash())){
             throw new RuntimeException("invalid password");
