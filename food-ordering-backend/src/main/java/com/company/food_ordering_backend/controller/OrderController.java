@@ -2,6 +2,10 @@ package com.company.food_ordering_backend.controller;
 
 import com.company.food_ordering_backend.dao.OrderDAO;
 import com.company.food_ordering_backend.service.OrderService;
+import com.company.food_ordering_backend.security.JwtUtil;
+import com.company.food_ordering_backend.security.JwtFilter;
+import io.jsonwebtoken.Claims;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,12 +32,12 @@ public class OrderController {
         return orderDAO.findOrdersByUser(userId);
     }
 
-    @PostMapping("/{orderId}/cancel")
+   @PostMapping("/{orderId}/cancel")
     public void cancelOrder(
             @PathVariable Long orderId,
-            @RequestParam Long userId
+            HttpServletRequest request
     ) {
+        Long userId = (Long) request.getAttribute("userId");
         orderService.cancelOrder(userId, orderId);
     }
-
 }

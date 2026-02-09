@@ -1,4 +1,4 @@
-package com.company.foodorder.security;
+package com.company.food_ordering_backend.security;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
